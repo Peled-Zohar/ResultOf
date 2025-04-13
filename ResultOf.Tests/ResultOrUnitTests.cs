@@ -29,7 +29,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(ReferenceEquals(result, _fail2));
-            Assert.That(!result.Succeeded);
+            Assert.That(!result.IsSuccess);
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _fail2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -81,7 +81,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _fail2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -92,7 +92,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _fail2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -103,7 +103,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -114,7 +114,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -125,7 +125,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -136,7 +136,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _success3));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         #endregion Or operator
@@ -150,7 +150,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -160,7 +160,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -170,7 +170,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -180,7 +180,7 @@ namespace ResultOf.Tests
 
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(ReferenceEquals(result, _fail2));
-            Assert.That(!result.Succeeded);
+            Assert.That(!result.IsSuccess);
         }
 
         [Test]
@@ -191,7 +191,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _fail2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -202,7 +202,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _fail2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -213,7 +213,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _fail2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -224,7 +224,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -235,7 +235,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -246,7 +246,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _fail1));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         [Test]
@@ -257,7 +257,7 @@ namespace ResultOf.Tests
             Assert.That(!ReferenceEquals(result, _success3));
             Assert.That(!ReferenceEquals(result, _success2));
             Assert.That(ReferenceEquals(result, _success1));
-            Assert.That(result.Succeeded);
+            Assert.That(result.IsSuccess);
         }
 
         #endregion OrElse operator

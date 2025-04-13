@@ -5,9 +5,9 @@ namespace ResultOf
     /// <summary>
     /// Provides a way to return a success indicator 
     /// and (in case of an error) error description from a method.
-    /// The <see cref="Result"/> class overloads the &amp; |, true and false operators to make it easy to use in validatios.
+    /// The <see cref="Result"/> class overloads the &amp; |, true and false operators to make it easy to use in validations.
     /// The &amp; operator returns the first failed operand (or the last operand tested),
-    /// and the | operator returns the first succeesfull operand (or the last operand tested).
+    /// and the | operator returns the first succeesfull  operand (or the last operand tested).
     /// The &amp;&amp; operator and || operators will do the same, but in a short-circuit way.
     /// </summary>
     public class Result
@@ -33,7 +33,7 @@ namespace ResultOf
         /// Initializes a new instance of the <see cref="Result"/> class to indicate a success.
         /// </summary>
         protected Result() 
-            => Succeeded = true;
+            => IsSuccess = true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Result"/> class to indicate a failure.
@@ -41,7 +41,7 @@ namespace ResultOf
         /// <param name="errorDescription">Description of the error.</param>
         protected Result(string errorDescription)
         {
-            Succeeded = false;
+            IsSuccess = false;
             ErrorDescription = errorDescription;
         }
 
@@ -52,7 +52,7 @@ namespace ResultOf
         /// <summary>
         /// Gets a boolean value indicating success or failure of the method.
         /// </summary>
-        public bool Succeeded { get; }
+        public bool IsSuccess { get; }
 
         /// <summary>
         /// Gets the description of the error.
@@ -65,7 +65,7 @@ namespace ResultOf
 
         /// <summary>
         /// Combines two results using the logical AND operation.
-        /// Returns the first operand if it's <see cref="Succeeded"/> property is false,
+        /// Returns the first operand if its <see cref="IsSuccess"/> property is false,
         /// otherwise the second operand.
         /// This can be used to determine the first result that failed in a sequence of results.
         /// </summary>
@@ -87,21 +87,21 @@ namespace ResultOf
             if (self is null) throw new ArgumentNullException(nameof(self));
             if (other is null) throw new ArgumentNullException(nameof(other));
 
-            return self.Succeeded ? other : self;
+            return self.IsSuccess ? other : self;
         }
 
         /// <summary>
         /// Combines two results using the logical OR operation.
-        /// Returns the first operand if it's <see cref="Succeeded"/> property is false,
+        /// Returns the first operand if its <see cref="IsSuccess"/> property is false,
         /// otherwise the second operand.
         /// This can be used to determine the first result that failed in a sequence of results.
         /// </summary>
         /// <example>
-        /// The following code demonstrate how to ensure at least one result have succeeded
+        /// The following code demonstrate how to ensure at least one result has succeeded
         /// <code>
         /// if(result1 || result2 || result3)
         /// { 
-        ///     // At least one result have succeeded.
+        ///     // At least one result has succeeded.
         /// }
         /// </code>
         /// </example>
@@ -113,7 +113,7 @@ namespace ResultOf
         {
             if (self is null) throw new ArgumentNullException(nameof(self));
             if (other is null) throw new ArgumentNullException(nameof(other));
-            return self.Succeeded ? self : other;
+            return self.IsSuccess ? self : other;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace ResultOf
         /// <param name="self">The instance of the <see cref="Result"/> class to test.</param>
         /// <returns>True when succeeded, false otherwise.</returns>
         public static bool operator true(Result self) 
-            => self.Succeeded;
+            => self.IsSuccess;
 
         /// <summary>
         /// Returns false when succeeded. (the opposite of the true operator.)
@@ -136,7 +136,7 @@ namespace ResultOf
         /// <param name="self">The instance of the <see cref="Result"/> class to test.</param>
         /// <returns>False when succeeded, true otherwise.</returns>
         public static bool operator false(Result self) 
-            => !self.Succeeded;
+            => !self.IsSuccess;
 
         #endregion operators
     }

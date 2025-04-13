@@ -5,9 +5,9 @@ namespace ResultOf
     /// <summary>
     /// Provides a way to return a value and a boolean success indicator, 
     /// and (in case of an error) error description from a method.
-    /// The <see cref="Result{T}"/> class overloads the &amp; and | operators to make it easy to use in validatios.
+    /// The <see cref="Result{T}"/> class overloads the &amp; and | operators to make it easy to use in validations.
     /// The &amp; operator returns the first failed operand (or the last operand tested),
-    /// and the | operator returns the first succeesfull operand (or the last operand tested).
+    /// and the | operator returns the first succeesfull  operand (or the last operand tested).
     /// The &amp;&amp; operator and || operators will do the same, but in a short-circuit way.
     /// </summary>
     public class Result<T> : Result
@@ -71,7 +71,7 @@ namespace ResultOf
 
         /// <summary>
         /// Combines two results using the logical AND operation.
-        /// Returns the first operand if it's <see cref="Succeeded"/> property is false,
+        /// Returns the first operand if its <see cref="IsSuccess"/> property is false,
         /// otherwise the second operand.
         /// This can be used to determine the first result that failed in a sequence of results.
         /// </summary>
@@ -93,21 +93,21 @@ namespace ResultOf
             if (self is null) throw new ArgumentNullException(nameof(self));
             if (other is null) throw new ArgumentNullException(nameof(other));
 
-            return self.Succeeded ? other : self;
+            return self.IsSuccess ? other : self;
         }
 
         /// <summary>
         /// Combines two results using the logical OR operation.
-        /// Returns the first operand if it's <see cref="Succeeded"/> property is false,
+        /// Returns the first operand if its <see cref="IsSuccess"/> property is false,
         /// otherwise the second operand.
         /// This can be used to determine the first result that failed in a sequence of results.
         /// </summary>
         /// <example>
-        /// The following code demonstrate how to ensure at least one result have succeeded
+        /// The following code demonstrate how to ensure at least one result has succeeded
         /// <code>
         /// if(result1 || result2 || result3)
         /// { 
-        ///     // At least one result have succeeded.
+        ///     // At least one result has succeeded.
         /// }
         /// </code>
         /// </example>
@@ -119,7 +119,7 @@ namespace ResultOf
         {
             if (self is null) throw new ArgumentNullException(nameof(self));
             if (other is null) throw new ArgumentNullException(nameof(other));
-            return self.Succeeded ? self : other;
+            return self.IsSuccess ? self : other;
         }
 
         #endregion operators

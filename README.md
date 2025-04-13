@@ -1,5 +1,9 @@
 # ResultOf
 
+### Now available on nuget.org
+[![NuGet](https://img.shields.io/nuget/v/Result.Simplified.svg)](https://www.nuget.org/packages/Result.Simplified)
+[![NuGet](https://img.shields.io/nuget/dt/Result.Simplified.svg)](https://www.nuget.org/packages/Result.Simplified)
+
 This project enables dot net methods to return an indication of success or failure, for any method return type (including void).
 It shouldn't be used instead of exceptions, but rather enable a method to return a failure indication in non-exceptional circumstances.
 
@@ -8,6 +12,8 @@ and `Result<T>` to enable non-void methods to do the same.
 
 Both `Result` and `Result<T>` overloads the `&` and `|` operators as well as the `true` and `false` operators, 
 meaning you can easily combine results in a short-circute manner for easy validations.  
+
+
 ### Usage example:
 
 **Return a *`Result`* from a method:**

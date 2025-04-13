@@ -1,8 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>7.1</LangVersion>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Peled-Zohar/ResultOf</RepositoryUrl>
+    <PackageTags>Result pattern, .NET, .netstandard2.0, .net8.0</PackageTags>
+    <Authors>Zohar Peled</Authors>
+    <Company />
+    <Copyright>Zohar Peled</Copyright>
+    <PackageIcon>ResultOf.png</PackageIcon>
+    <PackageId>Result.Simplified</PackageId>
+    <Title>A Simple yet powerful implementation of the result pattern</Title>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\ResultOf.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

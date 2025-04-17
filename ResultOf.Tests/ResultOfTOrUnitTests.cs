@@ -20,7 +20,7 @@ namespace ResultOf.Tests
             _success3 = Result<int>.Success(3);
         }
 
-        #region Or operator
+        #region | operator
 
         [Test]
         public void OrOperator_failAndSuccess()
@@ -139,9 +139,9 @@ namespace ResultOf.Tests
             Assert.That(result.IsSuccess);
         }
 
-        #endregion Or operator
+        #endregion | operator
 
-        #region OrElse operator
+        #region || operator
 
         [Test]
         public void OrElseOperator_failAndSuccess()
@@ -260,6 +260,6 @@ namespace ResultOf.Tests
             Assert.That(result.IsSuccess);
         }
 
-        #endregion OrElse operator
+        #endregion || operator
     }
 }

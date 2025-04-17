@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace ResultOf
 {
@@ -18,7 +19,7 @@ namespace ResultOf
         /// Initializes a new instance of the <see cref="Result"/> class to indicate a success.
         /// </summary>
         /// <returns>An instance of the <see cref="Result"/> class indicating success.</returns>
-        public static Result Success() 
+        public static Result Success()
             => new Result();
 
         /// <summary>
@@ -26,13 +27,13 @@ namespace ResultOf
         /// </summary>
         /// <param name="errorDescription">Description of the error.</param>
         /// <returns>An instance of the <see cref="Result"/> class indicating failure.</returns>
-        public static Result Fail(string errorDescription) 
+        public static Result Fail(string errorDescription)
             => new Result(errorDescription);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Result"/> class to indicate a success.
         /// </summary>
-        protected Result() 
+        protected Result()
             => IsSuccess = true;
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace ResultOf
         /// </summary>
         /// <param name="self">The instance of the <see cref="Result"/> class to test.</param>
         /// <returns>True when succeeded, false otherwise.</returns>
-        public static bool operator true(Result self) 
+        public static bool operator true(Result self)
             => self.IsSuccess;
 
         /// <summary>
@@ -135,7 +136,7 @@ namespace ResultOf
         /// </summary>
         /// <param name="self">The instance of the <see cref="Result"/> class to test.</param>
         /// <returns>False when succeeded, true otherwise.</returns>
-        public static bool operator false(Result self) 
+        public static bool operator false(Result self)
             => !self.IsSuccess;
 
         #endregion operators

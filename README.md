@@ -1,10 +1,17 @@
-# ResultOf
+# Result.Simplified
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+<!--
+[![Build Status](https://dev.azure.com/adamkarlsson/Result.Simplified/_apis/build/status/adamkarlsson.Result.Simplified?branchName=master)](https://dev.azure.com/adamkarlsson/Result.Simplified/_build/latest?definitionId=1&branchName=master)
+[![Code Coverage](https://codecov.io/gh/adamkarlsson/Result.Simplified/branch/master/graph/badge.svg)](https://codecov.io/gh/adamkarlsson/Result.Simplified)
+-->
 
 ### Now available on nuget.org
 [![NuGet](https://img.shields.io/nuget/v/Result.Simplified.svg)](https://www.nuget.org/packages/Result.Simplified)
 [![NuGet](https://img.shields.io/nuget/dt/Result.Simplified.svg)](https://www.nuget.org/packages/Result.Simplified)
 
-This project enables dot net methods to return an indication of success or failure, for any method return type (including void).
+
+**Result.Simplified** enables dot net methods to return an indication of success or failure, for any method return type (including void).
 It shouldn't be used instead of exceptions, but rather enable a method to return a failure indication in non-exceptional circumstances.
 
 Use `Result` to enable void methods to return an indication of success or failure, 
@@ -43,7 +50,7 @@ Result<int> DoSomethingAndReturnAnInt()
 void DoIfMethodSucceeded()
 {
     var result = DoSomething();
-    if(!result.Succeeded)
+    if(!result.IsSuccess)
     {   
         // Something went wrong, do something with result.ErrorDescription 
         // log or show the user or whatever
@@ -58,7 +65,7 @@ void DoIfMethodSucceeded()
 bool DoIfMethodSucceeded()
 {
     var result = DoSomethingAndReturnAnInt();
-    if(!result.Succeeded)
+    if(!result.IsSuccess)
     {   
         // Something went wrong, do something with result.ErrorDescription 
         // log or show the user or whateverlog or show the user or whatever
@@ -68,6 +75,53 @@ bool DoIfMethodSucceeded()
         // Everything is fine, you can go on with your code
     }
 ```
+
+**Note:** Since `Result` and `Result<T>` overloads the `true` and `false` operators,
+you don't techinally have to use the `IsSeuccess` property to check if the result is a success or not,
+but I do recommend it for readability.
+
+```csharp
+void DoIfMethodSucceeded()
+{
+    var result = DoSomething();
+    if(!result)
+    {   
+        // Something went wrong, do something with result.ErrorDescription 
+        // log or show the user or whatever
+        return;
+    }
+        // Everything is fine, you can go on with your code
+    }
+```
+
+Since `Result` and `Result<T>` overloads the `&` and `|` operators as well,
+you can combine multiple results in a short-circuit manner.
+
+```csharp
+Result FailFast()
+{
+    var result = DoSomething() // returns a result instance
+        && DoSomethingElse() // returns nother result instance
+        && DoAnotherThing() // returns nother result instance;
+
+    // result is the first failed result, or the last one if all succeeded.
+
+    return result;
+}
+
+Result FailSlow()
+{
+
+    var result = DoSomething() // returns a result instance
+        || DoSomethingElse() // returns nother result instance
+        || DoAnotherThing() // returns nother result instance;
+    
+    // result is the last failed result, or the first one if all succeeded.
+
+    return result;    
+}
+```
+
 
 **And a validation usage example:**
 ```csharp

@@ -1,15 +1,17 @@
-# ResultOf (Result.Simplified on nuget.org)
+# Result.Simplified
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 <!--
 [![Build Status](https://dev.azure.com/adamkarlsson/Result.Simplified/_apis/build/status/adamkarlsson.Result.Simplified?branchName=master)](https://dev.azure.com/adamkarlsson/Result.Simplified/_build/latest?definitionId=1&branchName=master)
 [![Code Coverage](https://codecov.io/gh/adamkarlsson/Result.Simplified/branch/master/graph/badge.svg)](https://codecov.io/gh/adamkarlsson/Result.Simplified)
--->
+
+
+### Now available on nuget.org
 [![NuGet](https://img.shields.io/nuget/v/Result.Simplified.svg)](https://www.nuget.org/packages/Result.Simplified)
 [![NuGet](https://img.shields.io/nuget/dt/Result.Simplified.svg)](https://www.nuget.org/packages/Result.Simplified)
+-->
 
-
-**ResultOf** enables dot net methods to return an indication of success or failure, for any method return type (including void).
+**Result.Simplified** enables dot net methods to return an indication of success or failure, for any method return type (including void).
 It shouldn't be used instead of exceptions, but rather enable a method to return a failure indication in non-exceptional circumstances.
 
 Use `Result` to enable void methods to return an indication of success or failure, 

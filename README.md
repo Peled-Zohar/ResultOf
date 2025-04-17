@@ -106,18 +106,6 @@ Result FailFast()
 
     return result;
 }
-
-Result FailSlow()
-{
-
-    var result = DoSomething() // returns a result instance
-        || DoSomethingElse() // returns nother result instance
-        || DoAnotherThing() // returns nother result instance;
-    
-    // result is the last failed result, or the first one if all succeeded.
-
-    return result;    
-}
 ```
 
 

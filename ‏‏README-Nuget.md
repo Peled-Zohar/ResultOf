@@ -12,13 +12,13 @@
 -->
 
 **Result.Simplified** enables dot net methods to return an indication of success or failure, for any method return type (including void).
-It shouldn't be used instead of exceptions, but rather enable a method to return a failure indication in non-exceptional circumstances.
+It shouldn't be used instead of exceptions, but rather to enable a method to return a failure indication in non-exceptional circumstances.
 
 Use `Result` to enable void methods to return an indication of success or failure, 
 and `Result<T>` to enable non-void methods to do the same.
 
-Both `Result` and `Result<T>` overloads the `&` and `|` operators as well as the `true` and `false` operators, 
-meaning you can easily combine results in a short-circute manner for easy validations.  
+Both `Result` and `Result<T>` overload the `&` and `|` operators as well as the `true` and `false` operators, 
+meaning you can easily combine results in a short-circuit manner for easy validations.  
 
 
 ### Usage example:
@@ -33,6 +33,23 @@ Result DoSomething()
         : Result.Fail("Something went wrong...");
 }
 ```
+or
+```csharp
+Result DoSomething()
+{
+    // some code...
+    return Result.SuccessIf(condition, "Something went wrong...");
+}
+```
+or
+```csharp
+Result DoSomething()
+{
+    // some code...
+    return Result.FailIf(negativeCondition, "Something went wrong...");
+}
+```
+
 
 **Return a *`Result<T>`* from a method:**
 ```csharp
@@ -42,6 +59,24 @@ Result<int> DoSomethingAndReturnAnInt()
     return condition
         ? Result<int>.Success(5)
         : Result<int>.Fail("Something went wrong...");
+}
+```
+or 
+```csharp
+Result<int> DoSomethingAndReturnAnInt()
+{
+    // some code...
+    return Result<int>.SuccessIf(condition, 5, "Something went wrong...", false);
+    // The boolean at the end determines whether to include the value in the failed result.
+}
+```
+or
+```csharp
+Result<int> DoSomethingAndReturnAnInt()
+{
+    // some code...
+    return Result<int>.FailIf(negativeCondition, 5, "Something went wrong...", true);
+    // The boolean at the end determines whether to include the value in the failed result.
 }
 ```
 
@@ -56,8 +91,8 @@ void DoIfMethodSucceeded()
         // log or show the user or whatever
         return;
     }
-        // Everything is fine, you can go on with your code
-    }
+    // Everything is fine, you can go on with your code
+}
 ```
 
 **Consume a method that returns a *`Result<T>`***
@@ -68,16 +103,16 @@ bool DoIfMethodSucceeded()
     if(!result.IsSuccess)
     {   
         // Something went wrong, do something with result.ErrorDescription 
-        // log or show the user or whateverlog or show the user or whatever
+        // Log or show the user or whatever
         return false;
     }
-        var intValue = result.Value;
-        // Everything is fine, you can go on with your code
-    }
+    var intValue = result.Value;
+    // Everything is fine, you can go on with your code
+}
 ```
 
 **Note:** Since `Result` and `Result<T>` overloads the `true` and `false` operators,
-you don't techinally have to use the `IsSeuccess` property to check if the result is a success or not,
+you don't technically have to use the `IsSuccess` property to check if the result is a success or not,
 but I do recommend it for readability.
 
 ```csharp
@@ -90,8 +125,8 @@ void DoIfMethodSucceeded()
         // log or show the user or whatever
         return;
     }
-        // Everything is fine, you can go on with your code
-    }
+    // Everything is fine, you can go on with your code
+}
 ```
 
 Since `Result` and `Result<T>` overloads the `&` and `|` operators as well,
@@ -101,29 +136,28 @@ you can combine multiple results in a short-circuit manner.
 Result FailFast()
 {
     var result = DoSomething() // returns a result instance
-        && DoSomethingElse() // returns nother result instance
-        && DoAnotherThing() // returns nother result instance;
+        && DoSomethingElse() // returns another result instance
+        && DoAnotherThing() // returns another result instance;
 
     // result is the first failed result, or the last one if all succeeded.
 
     return result;
 }
 
-Result FailSlow()
+Result SuccessIfAny()
 {
 
     var result = DoSomething() // returns a result instance
-        || DoSomethingElse() // returns nother result instance
-        || DoAnotherThing() // returns nother result instance;
+        || DoSomethingElse() // returns another result instance
+        || DoAnotherThing() // returns another result instance;
     
-    // result is the last failed result, or the first one if all succeeded.
+    // result is the first successful result, or the last one if all failed.
 
     return result;    
 }
 ```
 
-
-**And a validation usage example:**
+**You can chain result objects for validation:**
 ```csharp
 Result<SomeObject> Validate(SomeObject someObject)
 {
@@ -138,10 +172,10 @@ Result<SomeObject> Validate(SomeObject someObject)
         var isValid = predicate(someObject);
         if (!isValid)
         {
-            // Log non-exceptional error here...
+            // Optionally log non-exceptional error here...
         }
         return isValid 
-            ? Result<SomeObject>.Success(rbMatch) 
+            ? Result<SomeObject>.Success(someObject) 
             : Result<SomeObject>.Fail(errorMessage);
     }
 }

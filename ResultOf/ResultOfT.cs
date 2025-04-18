@@ -23,6 +23,17 @@ namespace ResultOf
             => new Result<T>(value);
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Result{T}"/> class based on the predicate.
+        /// </summary>
+        /// <param name="predicate">A condition to evaluate</param>
+        /// <param name="value">The value to return from the method.</param>
+        /// <param name="errorDescription">An error description in case <paramref name="predicate"/> evaluates to false</param>
+        /// <param name="includeValueInFailResult">An optional <see cref="bool"/> value indicating wether to include value in failed result. default is false.</param>
+        /// <returns>A new instance of the <see cref="Result{T}"/> class indicating success if <paramref name="predicate"/> evaluates to true, or failure otherwise.</returns>
+        public static Result<T> SuccessIf(Predicate<T> predicate, T value, string errorDescription, bool includeValueInFailResult = false)
+            => predicate.Invoke(value) ? Success(value) : Fail(errorDescription);
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Result{T}"/> class to indicate a failure.
         /// </summary>
         /// <param name="errorDescription">Description of the error.</param>
@@ -40,6 +51,17 @@ namespace ResultOf
         public static Result<T> Fail(string errorDescription, T value)
             => new Result<T>(errorDescription, value);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Result{T}"/> class based on the predicate.
+        /// </summary>
+        /// <param name="predicate">A condition to evaluate</param>
+        /// <param name="value">The value to return from the method.</param>
+        /// <param name="errorDescription">An error description in case <paramref name="predicate"/> evaluates to false</param>
+        /// <param name="includeValueInFailResult">An optional <see cref="bool"/> value indicating wether to include value in failed result. default is false.</param>
+        /// <returns></returns>
+        public static Result<T> FailIf(Predicate<T> predicate, T value, string errorDescription, bool includeValueInFailResult = false)
+            => predicate.Invoke(value) ? Fail(errorDescription, includeValueInFailResult ? value : default) : Success(value);
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="Result{T}"/> class to indicate a success.
         /// </summary>

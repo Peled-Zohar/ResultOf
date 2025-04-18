@@ -31,6 +31,24 @@ namespace ResultOf
             => new Result(errorDescription);
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Result"/> class based on the predicate.
+        /// </summary>
+        /// <param name="predicate">A condition to evaluate.</param>
+        /// <param name="errorDescription">Description of the error in case <paramref name="predicate"/> evaluates to false.</param>
+        /// <returns>An instance of the <see cref="Result"/> class indicating success if predicate evaluates to true, or fail otherwise.</returns>
+        public static Result SuccessIf(Func<bool> predicate, string errorDescription)
+            => predicate.Invoke() ? Success() : Fail(errorDescription);
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Result"/> class based on the predicate.
+        /// </summary>
+        /// <param name="predicate">A condition to evaluate</param>
+        /// <param name="errorDescription">ADescription of the error in case <paramref name="predicate"/> evaluates to true.</param>
+        /// <returns>An instance of the <see cref="Result"/> class indicating fail if predicate evaluates to true, or success otherwise.</returns>
+        public static Result FailIf(Func<bool> predicate, string errorDescription)
+            => predicate.Invoke() ? Fail(errorDescription) : Success();
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Result"/> class to indicate a success.
         /// </summary>
         protected Result()

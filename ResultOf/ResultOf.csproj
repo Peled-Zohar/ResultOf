@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -14,7 +14,9 @@
     <PackageIcon>ResultOf.png</PackageIcon>
     <PackageId>Result.Simplified</PackageId>
     <Title>A Simple yet powerful implementation of the result pattern</Title>
-    <PackageReleaseNotes>Updated Readme</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      Added new factory methods for both Result and Result&amp;T&amp;
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

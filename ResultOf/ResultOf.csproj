@@ -15,7 +15,7 @@
     <PackageId>Result.Simplified</PackageId>
     <Title>A Simple yet powerful implementation of the result pattern</Title>
     <PackageReleaseNotes>
-      Added new factory methods for both Result and Result&amp;T&amp;
+      Added new factory methods for both Result and Result&lt;T&gt;
     </PackageReleaseNotes>
   </PropertyGroup>
 
